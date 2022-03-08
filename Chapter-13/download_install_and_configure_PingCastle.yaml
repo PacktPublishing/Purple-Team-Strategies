@@ -1,4 +1,4 @@
-​--- 
+--- 
 - name: Download, Install and Configure PingCastle 
  hosts: all 
  gather_facts: true 
@@ -17,7 +17,7 @@
    win_shell: 
           script: | 
 get_url = (Invoke-WebRequest -Uri "https://www.pingcastle.com/download").Links.Href |select-string -pattern 'zip' | Sort-Object |Select-object -first 1 
-            Write-Host $get_url 
+           Write-Host $get_url 
    register: pwsh_output 
  
  - name: Filter url result 
@@ -38,12 +38,12 @@ get_url = (Invoke-WebRequest -Uri "https://www.pingcastle.com/download").Links.H
    with_items: 
    - "{{ pingcastle_directory }}" 
    - "{{ tmp_directory }}" 
- - name: Download the latest version of pingcastle 
+ - name: Download the latest version of PingCastle 
    win_get_url: 
       url: "{{ url_download_latest }}" 
       dest: "{{ tmp_directory }}" 
  - name: Get all files in a folder 
-   win_shell: Dir -Recurse c:\tmp\ | Get-Childitem | select -expandproperty name 
+   win_shell: Dir -Recurse "{{ tmp_directory }}"   | Get-Childitem | select -expandproperty name 
    register: found_files 
    ignore_errors: true 
  - name: Filter and store only filename 
