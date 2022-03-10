@@ -12,26 +12,26 @@
     pingcastle_directory: C:\apps\pingcastle
     report_directory: C:\apps\reports
     pingcastle_target: lab-purple.local
- 
+
   tasks:
   - name: Get date of the day
     win_shell: Get-Date -Format "yyyyMMdd"
     register: get_date
- 
+
   - name: Get the latest xml filename
     win_shell: |
        $latestfile = Get-ChildItem -path {{ report_directory }} -Attributes !Directory *.xml | Sort-Object -Descending -Property LastWriteTime | select -First 1
        $latestfile.Name
     register: latest_xml_report
- 
+
   - name: Run pingcastle.exe to generate the report
     win_shell: |
        cd {{pingcastle_directory }}
        ./PingCastle.exe --healthcheck --datefile --server {{ pingcastle_target }}
- 
+
   - name: Obtain information about file
     ansible.windows.win_stat:
-      path: "{{ pingcastle_directory }}\{{ latest_xml_report }}"
+      path: '{{ pingcastle_directory }}\{{ latest_xml_report }}'
     register: report_info
 
   - name: Move reports in another folder

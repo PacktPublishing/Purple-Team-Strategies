@@ -1,23 +1,30 @@
-   vars:
-       diffing_code: /data/script/PingCastle-diffing.py
-   - name: Get report in a audit folder created J-1
-     shell: find "${option.path}" -mmin +60 -mmin -1440  -type f -name "*.xml"
-     register: previous
-  
-   - name: Get report in a audit folder newer than 20 minutes
-     find:
-       paths: "${option.path}"
-       age: "-20m"
-     register: current
- 
-   - name: Run the python script in charge of "diffing"
-     command: python3 {{ diffing_code }} {{ previous }} {{ current }}
-     register: results
-  
-   - debug:
-       var: results.stdout_lines
-     when: results.stdout_lines|length > 0
- 
-   - debug:
-       msg: "Everything is ok, no difference was found between yesterday and today"
-     when: results.stdout_lines|length == 0
+---
+- name: Pingcastle diffing
+  hosts: all
+  gather_facts: True
+  vars:
+    diffing_code: /data/script/PingCastle-diffing.py
+
+  tasks:
+  - name: Get report in a audit folder created J-1
+    shell: find "${option.path}" -mmin +60 -mmin -1440  -type f -name "*.xml"
+    register: previous
+
+  - name: Get report in a audit folder newer than 20 minutes
+    find:
+      paths: "${option.path}"
+      age: "-20m"
+    register: current
+
+  - name: Run the python script in charge of "diffing"
+    command: python3 {{ diffing_code }} {{ previous }} {{ current }}
+    register: results
+
+  - debug:
+      var: results.stdout_lines
+    when: results.stdout_lines|length > 0
+
+  - debug:
+      msg: "Everything is ok, no difference was found between yesterday and today"
+    when: results.stdout_lines|length == 0
+
