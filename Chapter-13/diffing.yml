@@ -1,3 +1,5 @@
+   vars:
+       diffing_code: /data/script/PingCastle-diffing.py
    - name: Get report in a audit folder created J-1
      shell: find "${option.path}" -mmin +60 -mmin -1440  -type f -name "*.xml"
      register: previous
@@ -9,7 +11,7 @@
      register: current
  
    - name: Run the python script in charge of "diffing"
-     command: python3 /data/script/PingCastle-diffing.py {{ previous }} {{ current }}
+     command: python3 {{ diffing_code }} {{ previous }} {{ current }}
      register: results
   
    - debug:

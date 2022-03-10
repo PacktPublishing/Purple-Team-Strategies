@@ -31,9 +31,9 @@
  
   - name: Obtain information about file
     ansible.windows.win_stat:
-      path: "{{pingcastle_directory }}\{{ latest_xml_report }}"
+      path: "{{ pingcastle_directory }}\{{ latest_xml_report }}"
     register: report_info
 
   - name: Move reports in another folder
-    win_shell: Get-Item –Path {{ pingcastle_directory }}\ad_hc_lab-purple.local_{{ get_date }}* | Move-Item -Destination {{ report_directory }}
+    win_shell: Get-Item –Path {{ pingcastle_directory }}\ad_hc_{{ pingcastle_target }}_{{ get_date }}* | Move-Item -Destination {{ report_directory }}
     when: report_info.size > "1024"
