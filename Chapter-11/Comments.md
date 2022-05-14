@@ -1,7 +1,14 @@
 # Comments
 
 ## Purple Teaming Log and Report
-Here you will find an example of the Purple Teaming Log and Report presented in Chapter 2 of the book. 
+Here you will find a concrete example of the Purple Teaming Log and Report presented in Chapter 2 of the book. 
+It is pre-filled in to emulate a malware threat (as opposed to a threat actor) named Qakbot.
+Therefore you will find in this document:
+- Teams and roles
+- Exercise's objectives
+- A threat intelligence overview
+- An adversary emulation plan
+
 This is of course an example that should be adapted to your needs and environment but we hope it can serve as a main document for your first purple teaming exercise.
 
 ### A word on TTPs timeline
