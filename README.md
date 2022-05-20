@@ -54,7 +54,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 * Cryptography Algorithms [[Packt]](https://www.packtpub.com/product/cryptography-algorithms/9781789617139) [[Amazon]](https://www.amazon.com/Next-generation-Cryptography-Algorithms-Explained-implementation-ebook/dp/B093Y11H9Q)
 
-## Get to Know the Author
+## Get to Know the Authors
 **David Routin**
 He became interested in computer security at a young age. He started by learning about old-school attack methods and defense against them in the 1990s with Unix/Linux systems. He now has over two decades of experience and remains passionate about both sides of security (offensive and defensive). He has made multiple contributions to the security industry in different forms, from the MITRE ATT&CK framework, the SIGMA project, and vulnerability disclosures (Microsoft) to public event speaking and multiple publications, including articles in the French MISC magazine.
 As a security professional, he has held multiple positions, including security engineer, open source expert, CISO, and now security operations center (SOC) and Purple Team manager at e-Xpert Solutions. Over the last 10 years, he has been in charge of building and operating multiple SOCs for MSSPs and private companies in various sectors (including industry, pharma, insurance, finance, and defense).
